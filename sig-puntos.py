@@ -188,7 +188,7 @@ def parse_contents(contents, filename, date):
                           'showTips': False,  # True, False
                           'displayModeBar': True,  # True, False, 'hover'
                           'watermark': True,
-                          # 'modeBarButtonsToRemove': ['pan2d','select2d'],
+                          'modeBarButtonsToRemove': ['pan2d','select2d', 'toggleHover', 'resetViews'],
                       },
 
                       ),
@@ -304,6 +304,7 @@ def make_graphs(opc_geografica, opc_clasificacionp, opc_transparenciap, opc_esti
                               mapbox_zoom=15,
                               mapbox_center={'lat': dp1['Y_INICIO'].mean(), 'lon': dp1['X_INICIO'].mean()},
                               width=1000, height=650,
+                              clickmode="event+select"
                               )
         else:
             fig = px.scatter_mapbox(dp1, lat=dp1['Y_INICIO'], lon=dp1['X_INICIO'], color=dp1[opc_clasificacionp],
@@ -320,6 +321,7 @@ def make_graphs(opc_geografica, opc_clasificacionp, opc_transparenciap, opc_esti
                           mapbox_accesstoken='pk.eyJ1Ijoicm1vcHl0aG9uIiwiYSI6ImNrbmZ6MGZyMDF3Yncyd2s4ODVoMmR1Z3EifQ.FCGeYHLeHwjRkksgEyIrSw',
                           mapbox_zoom=15, mapbox_center={'lat': dp1['Y_INICIO'].mean(), 'lon': dp1['X_INICIO'].mean()},
                           width=1000, height=650,
+                          clickmode="event+select",
                           coloraxis_colorbar=dict(title=opc_clasificacionp, titleside='top',
                                                  titlefont=dict(size=11, family='Arial, sans-serif'),
                                                  thicknessmode='fraction',
